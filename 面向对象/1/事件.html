@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--react.js是React的核心库-->
+    <script src="../../build/react.min.js"></script>
+    <!--react-dom.js的作用是提供与Dom相关的功能-->
+    <script src="../../build/react-dom.min.js"></script>
+    <!--broswer.min.js 的作用是将jsx语法转换成javascript 语法-->
+    <script src="../../build/babel.min.js"></script>
+</head>
+<body>
+<!--React渲染的模板内容会插入到这个dom节点中，作为一个容器-->
+
+<div id="container">
+
+</div>
+
+</body>
+<!--在react尅法中，使用JSX，跟javaScript不兼容，在使用JSX的地方，要设置type：text/babel-->
+<!--babel 是一个转换编辑器，ES6转成可以在浏览器中运行的代码-->
+
+<script type="text/jsx">
+    //在此处编写js
+
+    class Comp extends React.Component {
+
+        constructor(...args) {                  /*不是用类的话 ，需要使用getInitialState:function(){return {}}*/
+
+            super(...args);     /*超类、父类，必须先完成父类的构造工作  ...args把所有接受的参数都赋值给父类*/
+
+            this.state={value:"请输入"}
+        }
+
+        fn(event) {
+
+            this.setState({
+                value:event.target.value
+            })
+
+        }
+
+
+        render() {
+            var value = this.state.value;
+
+            return (
+                <div>
+                    <input value={value} onChange={this.fn.bind(this)} type="text"/>
+                    <span>{value}</span>
+
+                </div>
+            )
+
+        }
+
+
+    }
+
+
+            window.onload=function(){
+                ReactDOM.render(
+                        <Comp />,
+                        document.getElementById("container")
+                )
+                }
+
+
+
+</script>
+</html>

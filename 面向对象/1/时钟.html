@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--react.js是React的核心库-->
+    <script src="../../build/react.min.js"></script>
+    <!--react-dom.js的作用是提供与Dom相关的功能-->
+    <script src="../../build/react-dom.min.js"></script>
+    <!--broswer.min.js 的作用是将jsx语法转换成javascript 语法-->
+    <script src="../../build/babel.min.js"></script>
+
+    <style>
+        .box{
+            width: 200px;
+            height: 300px;
+            background: blue;
+        }
+    </style>
+</head>
+<body>
+<!--React渲染的模板内容会插入到这个dom节点中，作为一个容器-->
+
+<div id="container">
+
+</div>
+
+</body>
+<!--在react尅法中，使用JSX，跟javaScript不兼容，在使用JSX的地方，要设置type：text/babel如果不可以的话可以改成jsx-->
+<!--babel 是一个转换编辑器，ES6转成可以在浏览器中运行的代码-->
+
+<script type="text/jsx">
+    //在此处编写js
+  class Clock extends React.Component{
+
+      constructor(...args){
+          super(...args);
+
+           this.state={h:0,m:0,s:0}
+          var _this = this;
+          setInterval(function(){
+              _this.tick()           /*不能直接使用this,因为调用者不对,和在标签内使用onClick调用其实
+              原理是一样的，只是在标签里的调用时不用加后边的括号的，并且都需要绑定真正调用者的this*/
+          },1000)
+
+      }
+
+      componentDidMount(){
+          this.tick();
+      }
+
+      tick(){
+          var date = new Date();
+          this.setState({
+              h:date.getHours(),
+              m:date.getMinutes(),
+              s:date.getSeconds()
+          })
+      }
+
+
+
+      render(){
+
+          return <div>
+              <span>{this.state.h}</span>:
+              <span>{this.state.m}</span>:
+              <span>{this.state.s}</span>
+              </div>
+      }
+  }
+
+
+
+    window.onload=function(){
+        var oDiv = document.getElementById("container");
+
+        ReactDOM.render(
+                <Clock />,
+                oDiv
+        )
+    }
+
+</script>
+</html>

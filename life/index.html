@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--react.js是React的核心库-->
+    <script src="../build/react.min.js"></script>
+    <!--react-dom.js的作用是提供与Dom相关的功能-->
+    <script src="../build/react-dom.min.js"></script>
+    <!--broswer.min.js 的作用是将jsx语法转换成javascript 语法-->
+    <script src="../build/babel.min.js"></script>
+</head>
+<body>
+<!--React渲染的模板内容会插入到这个dom节点中，作为一个容器-->
+
+<div id="container">
+
+</div>
+
+</body>
+<!--在react尅法中，使用JSX，跟javaScript不兼容，在使用JSX的地方，要设置type：text/babel-->
+<!--babel 是一个转换编辑器，ES6转成可以在浏览器中运行的代码-->
+<script type="text/jsx">
+    //在此处编写js
+
+    /*
+    * 生命周期
+    *
+    *
+    * 三个状态
+    *
+    * Mounting：组件挂载  已插入真实  DOM
+    *
+    * Updating：组件更新
+    *
+    * Unmounting 组件移出
+    *
+    *
+    * 组件声明周期四个阶段
+    *
+    * 创建   实例化   更新  销毁
+    *
+    *
+    *
+    * */
+
+    var Demo = React.createClass({
+
+        /*一、创建阶段：
+        *
+        * 流程：
+        *
+        * 只调用getDefaultProps方法
+        *
+        *
+        * */
+
+        getDefaultProps:function(){
+
+            //创建类的时候被调用，设置this.props
+            console.log("getDefaultProps")
+            return {}
+        },
+
+        /*
+        * 二、实例化阶段
+        *
+        * 流程：
+        *
+        * getInitialState
+        * componentWillMount
+        * render
+        * componentDidMount
+        *
+        * */
+
+        getInitialState:function(){
+            //设置this.state的默认值
+
+            console.log("getInitialState");
+
+            return null;
+        },
+
+        componentWillMount:function(){
+            console.log("componentWillMount")
+        },
+
+        render:function(){
+            console.log("render");
+            return <div>hello react</div>
+        },
+
+        componentDidMount:function(){
+            //在render之后吊用
+
+            //在该方法中，react会使用render方法返回虚拟dom对象创建真是的dom结构
+
+            //可以在这个方法中读取dom节点
+        },
+
+        /*更新*/
+
+        componentWillReceiveProps:function(){
+            console.log("componentWillReceiveProps");
+        },
+
+        shouldComponentUpdate:function(){
+            console.log("shouldComponentUpdate");
+            return true;            //改成false 的时候就不会更新了
+        },
+
+        componentWillUpdate:function(){
+            console.log("componentWillUpdate");
+        },
+
+        componentDidUpdate:function(){
+            console.log("componentDidUpdate");
+        },
+
+        /*销毁*/
+
+        componentWillUnmount:function(){
+            console.log("componentWillUnmount");
+        }
+
+    })
+
+    ReactDOM.render(
+            <Demo />,
+            document.getElementById("container")
+    )
+
+
+    ReactDOM.render(
+            <Demo />,
+            document.getElementById("container")
+    )
+</script>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../build/react.min.js"></script>
+    <!--react-dom.js的作用是提供与Dom相关的功能-->
+    <script src="../build/react-dom.min.js"></script>
+    <!--broswer.min.js 的作用是将jsx语法转换成javascript 语法-->
+    <script src="../build/babel.min.js"></script>
+    <script src="bundle.js"></script>
+
+    <script type="text/jsx">
+        window.onload=function (){
+            var oView=document.getElementsByTagName('blue-view')[0];
+
+            ReactDOM.render(
+                    <Test />,
+                    oView
+            );
+        };
+
+    </script>
+</head>
+<body>
+<blue-view></blue-view>
+</body>
+</html>

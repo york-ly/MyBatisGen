@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--react.js是React的核心库-->
+    <script src="../build/react.min.js"></script>
+    <!--react-dom.js的作用是提供与Dom相关的功能-->
+    <script src="../build/react-dom.min.js"></script>
+    <!--broswer.min.js 的作用是将jsx语法转换成javascript 语法-->
+    <script src="../build/babel.min.js"></script>
+</head>
+<body>
+<!--React渲染的模板内容会插入到这个dom节点中，作为一个容器-->
+
+<div id="container">
+
+</div>
+
+</body>
+<!--在react尅法中，使用JSX，跟javaScript不兼容，在使用JSX的地方，要设置type：text/babel-->
+<!--babel 是一个转换编辑器，ES6转成可以在浏览器中运行的代码-->
+<script type="text/jsx">
+    //在此处编写js
+
+    /*
+    * 需求：定义一个组件，可以将用户在输入框内输入的内容进行实施显示
+    *
+    * 分析：
+    * 组件与用户交互过程中，存在状态的变化，即输入框的值
+    *
+    *
+    * */
+
+ /*   var Input =React.createClass({
+
+        getInitialState:function(){
+            return {
+                value:"请输入"
+            };
+        },
+
+
+        handleChange:function(){
+            //通过event.target.value读取用户输入的值
+
+            this.setState({
+                value:event.target.value
+            });
+        },
+
+        render:function(){
+            var value =this.state.value;
+            return (
+                    <div>
+                        <input type="text" value={value} onChange={this.handleChange} />
+                        <p>{value}</p>
+                    </div>
+            )
+        }
+    })
+
+
+    ReactDOM.render(
+            <Input />,
+            document.getElementById("container")
+    )*/
+
+
+//语言严谨，该结束的后边的杠 一定要 闭合
+
+    var Input = React.createClass({
+
+        getInitialState: function () {
+            return {
+
+                value: "请输入"
+            }
+        },
+
+      handleClick:function(){
+          this.setState ({
+              value:event.target.value
+          })
+      },
+
+
+        render:function(){
+
+            return(
+            <div>
+                <input value={this.state.value} type="text" onChange={this.handleClick}/>
+                <p>{this.state.value}</p>
+            </div>
+
+            )
+        }
+
+    })
+
+
+                        ReactDOM.render(
+                        <Input />,
+                        document.getElementById("container")
+                        )
+
+
+</script>
+</html>

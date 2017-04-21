@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../build/jquery.js"></script>
+    <!--react.js是React的核心库-->
+    <script src="../../build/react.min.js"></script>
+    <!--react-dom.js的作用是提供与Dom相关的功能-->
+    <script src="../../build/react-dom.min.js"></script>
+    <!--broswer.min.js 的作用是将jsx语法转换成javascript 语法-->
+    <script src="../../build/babel.min.js"></script>
+
+</head>
+<body>
+<!--React渲染的模板内容会插入到这个dom节点中，作为一个容器-->
+
+<blue-view>
+
+</blue-view>
+
+
+</body>
+<!--在react尅法中，使用JSX，跟javaScript不兼容，在使用JSX的地方，要设置type：text/babel-->
+<!--babel 是一个转换编辑器，ES6转成可以在浏览器中运行的代码-->
+
+
+
+
+<script type="text/jsx">
+    //在此处编写js
+
+    //defaultCheck  defaultValue
+
+    class Father extends React.Component{
+
+        fn1(){
+            alert("这是父级元素")
+        }
+
+        fn2(ev){
+            alert("这是子级元素")
+
+         /*   ev.nativeEvent.stopImmediatePropagation();*/
+          ev.stopPropagation()
+        }
+
+        render(){
+            return(
+                    <div onClick={this.fn1.bind(this)}>
+                        <div onClick={this.fn2.bind(this)}>aaaaa</div>
+                        </div>
+            )
+
+        }
+
+
+    }
+
+    $(function(){
+        ReactDOM.render(
+                <Father />,
+                $("blue-view")[0]
+        )
+    })
+
+
+
+
+</script>
+</html>
